@@ -1,7 +1,9 @@
 <template lang="pug">
   .hello
     .ui.container
-      .slide(v-show = "!step")
+      .slide(v-show = "step == -1")
+        .ui.huge.green.button#start(@click = "step=0") 按此開始
+      .slide(v-show = "step == 0")
         .ui.attached.segment
             h1.ui.heaer 
               i.purple.puzzle.icon
@@ -42,17 +44,18 @@
             | 測驗結果：你是一名「{{getFinal()}}」優勢的學習者!!
             .sub.header {{getNum()}}
         p(v-html = "getAdvice()")
-        a.ui.huge.green.button(@click="step = 0") 再來一次!
+        a.ui.huge.green.button(@click="step = -1") 再來一次!
 
  
 </template>
 
 <script>
+
 export default {
   name: 'app',
   data () {
     return {
-      step: 0,
+      step: -1,
       qs: [
         {
           t: '回想一下，你是如何學習新事物的，試著避開選擇像肢體類的技術學習，如騎腳踏車。你比較偏好從：（可複選）',
@@ -240,6 +243,8 @@ export default {
 }
 </script>
 
+
+
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
@@ -252,6 +257,21 @@ p, label {
 .list .item {
   text-align: left;
   font-size: 20px;
+}
+
+.hello {
+  background-color: #ffc;
+}
+
+.ui.container, .slide {
+}
+
+#start {
+  position: relative;
+  top: 45vh;
+  display: block;
+  height: 3em;
+  margin: auto;
 }
 
 </style>
