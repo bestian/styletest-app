@@ -4,6 +4,8 @@ import router from './router'
 import './registerServiceWorker'
 
 Vue.config.productionTip = false
+require('semantic-ui-css/semantic.css')
+
 
 new Vue({
   router,
