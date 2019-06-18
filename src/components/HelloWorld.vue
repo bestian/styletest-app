@@ -29,7 +29,7 @@
           .field
             .list(v-for="(c,index) in q.cs")
               .item
-                .ui.slider.checkbox
+                .ui.toggle.checkbox
                   input(type="checkbox" v-model = "q.checked[index]")
                   label {{c}}
 
