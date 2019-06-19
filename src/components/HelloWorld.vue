@@ -1,6 +1,6 @@
 <template lang="pug">
   .hello
-    .ui.container
+    .ui.container(v-show = "step == -1 || step == 0")
       .slide(v-show = "step == -1")
         .ui.huge.green.button#start(@click = "step=0") 按此開始
       .slide(v-show = "step == 0")
