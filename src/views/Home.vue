@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <HelloWorld/>
+    <HelloWorld :qs = "qs"/>
   </div>
 </template>
 
@@ -10,10 +10,11 @@ import HelloWorld from '@/components/HelloWorld.vue'
 
 export default {
   name: 'home',
+  props: ['qs'],
   components: {
     HelloWorld
   },
-  data() {
+  data () {
     return {
       media : null,
       mediaTimer : null,
@@ -29,6 +30,6 @@ export default {
   .hello {
     display: flex;
     justify-content: center;
-    height: 100vh;
+    margin-top: 100px; 
   }
 </style>
