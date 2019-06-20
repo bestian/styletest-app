@@ -2,31 +2,13 @@
   .hello
     .ui.container(v-show = "step == -1 || step == 0")
       .slide(v-show = "step == -1")
-        .ui.huge.green.button#start(@click = "step=0") 按此開始
-      .slide(v-show = "step == 0")
-        .ui.attached.segment
-            h1.ui.heaer 
-              i.purple.puzzle.icon
-              | 何謂學習風格？
+        #start
+          h1 歡迎使用學習風格自我測驗
+          .ui.huge.green.button(v-tap @click = "step=0") 按此開始測驗
 
-            p 現代的教育研究者發現，每個人擅長的學習方式都有不同。即使在同一個課室中，每個人去掌握和理解的方法也不一樣。這就是每個人的學習風格。
-                i.purple.fire.icon
-
-            p 學習風格有千百種以上，要細分有很多角度。本測試採取的是「
-                i.purple.unhide.icon
-                | 視
-                i.purple.assistive.listening.systems.icon
-                |聽
-                i.purple.book.icon
-                |讀
-                i.purple.sign.language.icon
-                |作」(VARK)架構，特色是只要回答16個問題，就能讓您很快找出適合自己的有效學習方式。
-
-        a.ui.huge.green.bottom.attached.button(tabindex="0" @click ="step = 1") 開始測驗!
-
-    .ui.form.slide.container(v-show="step == 1")
+    .ui.form.slide.container(v-show="step == 0")
         .ui.segment.repeated-item(v-for="q in qs")
-          h2.ui.dividing.header {{q.t}}
+          h2.ui.dividing.header {{q.t}} (可複選)
           br
           .field
             .list(v-for="(c,index) in q.cs")
@@ -35,10 +17,10 @@
                   input(type="checkbox" v-model = "q.checked[index]")
                   label {{c}}
 
-        a.ui.huge.green.top.attached.button(tabindex="0" @click="step = 2") 看結果!
+        a.ui.huge.green.top.attached.button(tabindex="0" @click="step = 1") 看結果!
         .ui.attached.segment
 
-    #resault.ui.segment.slide2(v-show="step == 2")
+    #resault.ui.segment.slide2(v-show="step == 1")
         h1.ui.header 
             i.purple.puzzle.icon
             | 測驗結果：你是一名「{{getFinal()}}」優勢的學習者!!
@@ -52,7 +34,7 @@
 <script>
 
 export default {
-  name: 'app',
+  name: 'test',
   props: ['qs'],
   data () {
     return {
@@ -153,7 +135,7 @@ export default {
 
 p, label {
   font-size: 20px !important;
-  line-height: 1.5 !important;
+  line-height: 1.618 !important;
   text-align: left;
 }
 
@@ -171,10 +153,14 @@ p, label {
 
 #start {
   position: relative;
-  top: 45vh;
+  top: 25vh;
   display: block;
   height: 3em;
   margin: auto;
+}
+
+.hello {
+  margin-top: 100px;
 }
 
 </style>

@@ -1,23 +1,25 @@
 <template lang="pug">
   .about
-    h1(v-if="!msg") 猜猜看
+    h1(v-if="!msg") 學習風格猜猜看
     h1(v-else) {{msg}}
     h3(v-if="step > -1") 連勝: {{wins}} 連勝 
-    .ui.huge.green.button(v-show="step == -1" @click="step = 0; reset()") 按此開始
+    .ui.huge.green.button(v-tap v-show="step == -1" @click="step = 0; reset()") 按此開始遊戲
     hr
-    .ui.grid.container(v-if="step > -1")
+    .ui.grid.segment.container(v-if="step > -1")
       .ui.two.column.row
-        .column.segment
-          h3 遇到的情境：
+        .column
+          h3 假想情境：
           p {{myQ.t}}
           hr
           h3 學習的方法：
           p {{myQ.cs[idx]}}
-        .column.segment
-          h3 這樣的反應，大概是什麼學習風格呢？
+        .column
+          h3 這樣的方法，屬於什麼學習風格呢？
           .ui.list
             .item(v-for = "(vark, index) in myQ.rs")
-              button.ui.huge.green.button( @click="guess(index)") {{show[vark]}}
+              button.ui.huge.button(v-tap  @click="guess(index)" v-bind:class = "show[vark].c")
+                i.icon(v-bind:class = "show[vark].i")
+                | {{show[vark].t}}
 </template>
 
 <script>
@@ -34,10 +36,10 @@ export default {
       idx: 0,
       myQ: {},
       show: {
-        v: '視覺型',
-        a: '聽覺型',
-        r: '閱讀型',
-        k: '實作型'
+        v: {t: '視覺', c: 'orange', i: 'unhide'},
+        a: {t: '聽覺', c: 'purple', i: 'assistive listening systems'},
+        r: {t: '閱讀', c: 'blue', i: 'book'},
+        k: {t: '實作', c: 'red', i: 'sign language'}
       }
     }
   },
@@ -74,5 +76,10 @@ export default {
 .about {
   margin-top: 100px;
 }
+
+.ui.segment {
+  font-size: 18px;
+}
+
 
 </style>
