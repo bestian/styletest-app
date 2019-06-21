@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.1c2ede0ef85dcda2aba22494a23ef6d2.js"
+  "precache-manifest.ba60994793d264a523060b767d8fe56e.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "styletest-app"});
