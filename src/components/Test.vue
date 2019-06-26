@@ -7,8 +7,8 @@
           .ui.huge.green.button(v-tap @click = "step=0") 按此開始測驗
 
     .ui.form.slide.container(v-show="step == 0")
-        .ui.segment.repeated-item(v-for="q in qs")
-          h2.ui.dividing.header {{q.t}} (可複選)
+        .ui.segment.repeated-item(v-for="(q, idx) in qs")
+          h2.ui.dividing.header {{idx}}. {{q.t}} (可複選)
           br
           .field
             .list(v-for="(c,index) in q.cs")
